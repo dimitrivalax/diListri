@@ -1,0 +1,7 @@
+{
+  "name": "diListri",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
