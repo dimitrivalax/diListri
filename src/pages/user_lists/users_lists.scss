@@ -7,7 +7,7 @@ users_lists {
     overflow: hidden !important;
     width: 45px !important;
     height: 45px !important;
-    border: 2px solid  map_get($colors,theme_color) !important;
+    border: 2px solid  map_get($colors,light) !important;
   }
 
   .cssForRoundSLidingItems .button-inner{
@@ -50,5 +50,9 @@ users_lists {
 
   .toolbar-background {
     background-color:  map_get($colors,theme_color) !important;
+  }
+
+  .ion-md-checkmark{
+   color: map_get($colors,light);
   }
 }
