@@ -19,3 +19,9 @@ script:
   - "ionic cordova build browser - prod"
   - npm run test:ci
   - npm run lint
+notifications:
+  email:
+    recipients:
+      - dvalax.pro@gmail.coml
+    on_success: change # default: change
+    on_failure: always # default: always
