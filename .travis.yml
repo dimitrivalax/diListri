@@ -22,6 +22,6 @@ script:
 notifications:
   email:
     recipients:
-      - dvalax.pro@gmail.coml
-    on_success: change # default: change
+      - dvalax.pro@gmail.com
+    on_success: always # default: change
     on_failure: always # default: always
