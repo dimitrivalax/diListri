@@ -25756,15 +25756,15 @@ page-tutorial p b {
 }
 
 users_lists .searchbar-md .searchbar-input {
-  border-radius: 23px !important;
+  border-radius: 23px;
 }
 
 users_lists img {
-  border-radius: 50% !important;
-  overflow: hidden !important;
-  width: 45px !important;
-  height: 45px !important;
-  border: 2px solid #228B22 !important;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #ef6c00;
 }
 
 users_lists .cssForRoundSLidingItems .button-inner {
@@ -25777,41 +25777,41 @@ users_lists .cssForRoundSLidingItems .button-inner {
 }
 
 users_lists .cssForRoundSLidingItems button {
-  background-color: #FFC15E;
-  margin-left: -1px !important;
+  background-color: #228B22;
+  margin-left: -1px;
 }
 
 users_lists .cssForRoundSLidingItems, users_lists .cssForRoundSLidingItems ion-item {
-  height: 75px !important;
+  height: 75px;
 }
 
 users_lists .cssForRoundSLidingItems ion-icon:not(.nextDiff) {
-  margin-top: 10px !important;
-  font-size: 2.1em !important;
+  margin-top: 10px;
+  font-size: 2.1em;
 }
 
 users_lists h2 {
-  color: !important;
+  font-weight: bold;
+}
+
+users_lists .nextDiff {
+  color: #228B22;
 }
 
 users_lists ion-item-options[side=left] ion-icon {
-  color: #EA526F;
+  color: #FFDF55;
 }
 
 users_lists .login {
-  color: !important;
+  color: #228B22;
 }
 
 users_lists ion-searchbar {
-  background: !important;
-}
-
-users_lists .toolbar-background {
-  background-color: !important;
+  background: #ef6c00;
 }
 
 users_lists .ion-md-checkmark {
-  color: #228B22;
+  color: #ef6c00;
 }
 
 page-welcome .splash-bg {
