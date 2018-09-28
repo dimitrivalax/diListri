@@ -1,6 +1,8 @@
 users_lists {
-  .searchbar-md .searchbar-input{
-    border-radius: 23px ;
+
+  .searchbar-md {
+    padding: 1rem;
+    background-color: map_get($colors,primary) ;
   }
   img{
     border-radius: 50% ;
@@ -43,9 +45,6 @@ users_lists {
 
   .login{
     color:  map_get($colors,light) ;
-  }
-  ion-searchbar{
-    background: map_get($colors,primary) ;
   }
 
 

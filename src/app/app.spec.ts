@@ -22,57 +22,51 @@ const splashScreenStub = {
   hide: (): void => undefined
 };
 
-export class TranslateServiceStub{
-
-	public get(key: any): any {
-		return Observable.of(key);
+export class TranslateServiceStub {
+  public get(key: any): any {
+    return Observable.of(key);
   }
   public setDefaultLang(): any {
-		return Observable.of();
-	}
+    return Observable.of();
+  }
   public getBrowserLang(): any {
-		return Observable.of();
-	}
+    return Observable.of();
+  }
   public use(): any {
-		return Observable.of();
-	}
+    return Observable.of();
+  }
 }
 
-export class ConfigStub{
-
-	public get(key: any): any {
-		return Observable.of(key);
-  }	
+export class ConfigStub {
+  public get(key: any): any {
+    return Observable.of(key);
+  }
   public set(s1: String, s2: String, s3: String): any {
     return Observable.of(s1, s2, s3);
-	}
+  }
 }
 
-
-
-export class SettingsStub{
-
-	public get(key: any): any {
-		return Observable.of(key);
-	}
+export class SettingsStub {
+  public get(key: any): any {
+    return Observable.of(key);
+  }
 }
 
 describe('MyApp', () => {
   let instance: MyApp;
   let fixture: ComponentFixture<MyApp>;
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [MyApp],
       providers: [
-        { provide: Platform, useValue: platformStub},
-        {provide: TranslateService, useClass: TranslateServiceStub},
-        {provide: Settings, useClass: SettingsStub},
+        { provide: Platform, useValue: platformStub },
+        { provide: TranslateService, useClass: TranslateServiceStub },
+        { provide: Settings, useClass: SettingsStub },
         { provide: StatusBar, useValue: statusBarStub },
         { provide: SplashScreen, useValue: splashScreenStub },
-        {provide: Config, useClass: ConfigStub}
+        { provide: Config, useClass: ConfigStub }
       ]
     }).compileComponents();
   }));
