@@ -1,3 +1,4 @@
+import { Items } from './../../providers/items/items';
 import { UsersPage } from './users_lists';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -6,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController } from 'ionic-angular';
+import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController, Config } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { ItemsStub } from '../../providers';
 
@@ -27,8 +28,18 @@ const NavParamsStub = {
 
 
  class TranslateServiceStub{
-
-
+  public get(key: any): any {
+    return Observable.of(key);
+  }
+  public setDefaultLang(): any {
+    return Observable.of();
+  }
+  public getBrowserLang(): any {
+    return Observable.of();
+  }
+  public use(): any {
+    return Observable.of();
+  }
 }
 
  class ConfigStub{
@@ -53,11 +64,6 @@ const NavParamsStub = {
 class vibrationStub  {
 };
 
-class itemsStub  {
-  public query(key: any): any {
-		return Observable.of(key);
-	}
-};
 
 describe('UsersPage', () => {
   let instance: UsersPage;
@@ -67,6 +73,7 @@ describe('UsersPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
+      imports: [TranslateModule.forRoot()],
       declarations: [UsersPage],
       providers: [
         { provide: Platform, useValue: platformStub },
@@ -77,7 +84,7 @@ describe('UsersPage', () => {
         { provide: ToastController, useValue: NavParamsStub },
         { provide: AlertController, useValue: NavParamsStub },
         { provide: LoadingController, useValue: NavParamsStub },
-        { provide: Items, useValue: itemsStub },
+        { provide: Items, useValue: new ItemsStub },
         { provide: TranslateService, useClass: TranslateServiceStub }
       ]
     }).compileComponents();
