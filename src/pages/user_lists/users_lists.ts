@@ -12,7 +12,7 @@ import {Vibration} from '@ionic-native/vibration';
 
 
 import {Item} from '../../models/item';
-import {Items} from '../../providers';
+import {ItemsStub} from '../../providers';
 import {ItemSliding} from "ionic-angular/umd";
 
 
@@ -29,7 +29,7 @@ export class UsersPage {
 
 
   constructor(public vibration: Vibration, public navCtrl: NavController, public navParams: NavParams,
-              public items: Items, public modalCtrl: ModalController,
+              public items: ItemsStub, public modalCtrl: ModalController,
               public toastCtrl: ToastController, private alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
 

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
-import { Items } from '../../providers';
+import { ItemsStub } from '../../providers';
 
 
 const platformStub = {
