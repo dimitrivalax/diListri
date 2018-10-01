@@ -1,4 +1,4 @@
-import { Items } from './../../providers/items/items';
+import { Items as ItemsStub} from './../../mocks/providers/items';
 import { UsersPage } from './users_lists';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController, Config } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
-import { ItemsStub } from '../../providers';
+import { Items } from '../../providers';
 
 
 const platformStub = {

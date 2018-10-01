@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Item } from '../../models/item';
 
 @Injectable()
-export class ItemsStub {
+export class Items {
   items: Item[] = [];
 
   defaultItem: any = {

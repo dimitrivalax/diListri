@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
-import { ItemsStub } from '../../providers';
+import { Items } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,7 @@ import { ItemsStub } from '../../providers';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: ItemsStub, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
   }
 
