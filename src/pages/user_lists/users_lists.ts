@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { Item } from './../../models/item';
 import {Component} from '@angular/core';
 import {
   IonicPage,
@@ -9,9 +11,6 @@ import {
   LoadingController
 } from 'ionic-angular';
 import {Vibration} from '@ionic-native/vibration';
-
-
-import {Item} from '../../models/item';
 import {ItemSliding} from "ionic-angular/umd";
 import { Items } from '../../providers/items/items';
 
@@ -24,7 +23,7 @@ import { Items } from '../../providers/items/items';
 })
 export class UsersPage {
 
-  currentItems: any[];
+  currentItems: Observable<any>;
   public press: number = 0;
 
 
