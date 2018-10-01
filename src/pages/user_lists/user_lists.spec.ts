@@ -98,4 +98,17 @@ describe('UsersPage', () => {
   it('should create the UsersPage component', () => {
     expect(instance).toBeTruthy();
   });
+
+
+
+  it('should create the UsersPage component with 8 items', () => {
+    expect(instance).toBeTruthy();
+    expect(instance.currentItems[0].name).toStrictEqual('Burt Bear');
+    expect(instance.currentItems[1].name).toStrictEqual('Charlie Cheetah');
+    expect(instance.currentItems[2].name).toStrictEqual('Donald Duck');
+    expect(instance.currentItems[3].name).toStrictEqual('Eva Eagle');
+    expect(instance.currentItems[4].name).toStrictEqual('Ellie Elephant');
+    expect(instance.currentItems[5].name).toStrictEqual('Molly Mouse');
+    expect(instance.currentItems[6].name).toStrictEqual('Paul Puppy');
+  });
 });
