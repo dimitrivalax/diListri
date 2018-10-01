@@ -25755,8 +25755,9 @@ page-tutorial p b {
   color: #000000;
 }
 
-users_lists .searchbar-md .searchbar-input {
-  border-radius: 23px;
+users_lists .searchbar-md {
+  padding: 1rem;
+  background-color: #ef6c00;
 }
 
 users_lists img {
@@ -25804,10 +25805,6 @@ users_lists ion-item-options[side=left] ion-icon {
 
 users_lists .login {
   color: #228B22;
-}
-
-users_lists ion-searchbar {
-  background: #ef6c00;
 }
 
 users_lists .ion-md-checkmark {
