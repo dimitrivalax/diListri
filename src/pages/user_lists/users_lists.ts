@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { Item } from './../../models/item';
 import {Component} from '@angular/core';
 import {
@@ -23,7 +22,7 @@ import { Items } from '../../providers/';
 })
 export class UsersPage {
 
-  currentItems: Observable<any>;
+  currentItems: Item[];
   public press: number = 0;
 
 
