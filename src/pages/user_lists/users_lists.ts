@@ -12,7 +12,7 @@ import {
 } from 'ionic-angular';
 import {Vibration} from '@ionic-native/vibration';
 import {ItemSliding} from "ionic-angular/umd";
-import { Items } from '../../providers/items/items';
+import { Items } from '../../providers/';
 
 
 
