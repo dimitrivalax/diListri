@@ -105,6 +105,8 @@ To change the language of the app, edit `src/app/app.component.ts` and modify
 https://medium.com/@jakubsynowiec/debugging-typescript-jest-unit-tests-with-visual-studio-code-36cd16865bb0
 https://github.com/datencia/ionic2-jest-example
 
+run test command : npm run test -- --watch
+
 # TRAVIS
 http://kensodemann.github.io/angular/tdd/testing/ionic/2017/05/22/ionic-travis-ci.html
 

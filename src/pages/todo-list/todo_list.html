@@ -5,9 +5,9 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>{{ 'Users Lists' | translate }}</ion-title>
+    <ion-title>{{ 'Todo List' | translate }}</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="addItem()">
+      <button ion-button icon-only (click)="addTodo()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -16,15 +16,12 @@
 
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'Search Users' | translate }}"></ion-searchbar>
+  <ion-searchbar (ionInput)="getTodos($event)" placeholder="{{ 'Search Todo' | translate }}"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let item of currentItems" #slidingItem>
-      <ion-item (click)="openItem(item)" (press)="pressEvent($event)">
-        <ion-avatar item-start>
-          <img [src]="item.profilePic">
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
+    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos" #slidingItem>
+      <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.content}}</p>
         <ion-icon class="tick" item-end ios="ios-checkmark" md="md-checkmark" class="nextDiff"></ion-icon>
       </ion-item>
       <ion-item-options side="right">
@@ -42,7 +39,7 @@
       </ion-item-options>
 
       <ion-item-options side="left">
-        <button ion-button color="dark" (click)="deleteItem(item,slidingItem)" icon-start>
+        <button ion-button color="dark" (click)="deleteTodo(todo,slidingItem)" icon-start>
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

@@ -2,22 +2,22 @@ import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { UsersPage } from './users_lists';
-import { Items } from '../../providers/items/items';
+import { TodosPage } from './todo_list';
+import { Todos } from '../../mocks/providers/Todos';
 
 @NgModule({
   declarations: [
-    UsersPage,
+    TodosPage,
   ],
   imports: [
-    IonicPageModule.forChild(UsersPage),
+    IonicPageModule.forChild(TodosPage),
     TranslateModule.forChild()
   ],
   exports: [
-    UsersPage
+    TodosPage
   ],
   providers: [
-    Items
+    Todos
   ]
 })
 export class UsersPageModule { }

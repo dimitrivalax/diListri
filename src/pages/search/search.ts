@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { Item } from '../../models/item';
-import { Items} from '../../providers';
+import { Todo } from '../../models/todo';
+import { Todos } from '../../mocks/providers/Todos';
 
 @IonicPage()
 @Component({
@@ -13,7 +12,7 @@ export class SearchPage {
 
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public todos: Todos) { }
 
   /**
    * Perform a service for the proper items.
@@ -24,7 +23,7 @@ export class SearchPage {
       this.currentItems = [];
       return;
     }
-    this.currentItems = this.items.query({
+    this.currentItems = this.todos.query({
       name: val
     });
   }
@@ -32,7 +31,7 @@ export class SearchPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(item: Todo) {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });

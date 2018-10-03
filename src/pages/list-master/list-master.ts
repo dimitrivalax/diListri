@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
-
-import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Todo } from '../../models/todo';
+import { Todos } from '../../mocks/providers/Todos';
 
 @IonicPage()
 @Component({
@@ -10,10 +9,10 @@ import { Items } from '../../providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
+  currentItems: Todo[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
+  constructor(public navCtrl: NavController, public todos: Todos, public modalCtrl: ModalController) {
+    this.currentItems = this.todos.query();
   }
 
   /**
@@ -30,7 +29,7 @@ export class ListMasterPage {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        this.items.add(item);
+        this.todos.add(item);
       }
     })
     addModal.present();
@@ -40,13 +39,13 @@ export class ListMasterPage {
    * Delete an item from the list of items.
    */
   deleteItem(item) {
-    this.items.delete(item);
+    this.todos.delete(item);
   }
 
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(item: Todo) {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });

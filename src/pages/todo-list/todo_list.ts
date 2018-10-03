@@ -1,4 +1,4 @@
-import { Item } from './../../models/item';
+import { Todo } from '../../models/todo';
 import {Component} from '@angular/core';
 import {
   IonicPage,
@@ -11,27 +11,27 @@ import {
 } from 'ionic-angular';
 import {Vibration} from '@ionic-native/vibration';
 import {ItemSliding} from "ionic-angular/umd";
-import { Items } from '../../providers/';
+import { Todos } from '../../mocks/providers/Todos';
 
 
 
 @IonicPage()
 @Component({
-  selector: 'users_lists',
-  templateUrl: 'users_lists.html'
+  selector: 'todo_list',
+  templateUrl: 'todo_list.html'
 })
-export class UsersPage {
+export class TodosPage {
 
-  currentItems: Item[];
+  currentTodos: Todo[];
   public press: number = 0;
 
 
   constructor(public vibration: Vibration, public navCtrl: NavController, public navParams: NavParams,
-              public items: Items, public modalCtrl: ModalController,
+              public todos: Todos, public modalCtrl: ModalController,
               public toastCtrl: ToastController, private alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
 
-    this.currentItems = this.items.query();
+    this.currentTodos = this.todos.query();
 
 
   }
@@ -39,13 +39,13 @@ export class UsersPage {
   /**
    * Perform a service for the proper items.
    */
-  getItems(ev) {
+  getTodos(ev) {
     let val = ev.target.value;
     if (!val || !val.trim()) {
-      this.currentItems = this.items.query();
+      this.currentTodos = this.todos.query();
       return;
     }
-    this.currentItems = this.items.query({
+    this.currentTodos = this.todos.query({
       name: val
     });
   }
@@ -53,19 +53,19 @@ export class UsersPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openTodo(todo: Todo) {
     this.navCtrl.push('ItemDetailPage', {
-      item: item
+      todo: todo
     });
   }
 
 
-  addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        console.log(item);
-        this.items.add(item);
+  addTodo() {
+    let addModal = this.modalCtrl.create('TodoCreatePage');
+    addModal.onDidDismiss(todo => {
+      if (todo) {
+        console.log(todo);
+        this.todos.add(todo);
       }
     })
     addModal.present();
@@ -83,11 +83,11 @@ export class UsersPage {
   }
 
 
-  deleteItem(item, slidingItem: ItemSliding) {
+  deleteTodo(todo, slidingItem: ItemSliding) {
 
     let alert = this.alertCtrl.create({
       title: 'Confirm Delete',
-      message: 'Do you want to delete this user?',
+      message: 'Do you want to delete this todo?',
       buttons: [
         {
           text: 'Cancel',
@@ -105,9 +105,9 @@ export class UsersPage {
             loading.present();
             setTimeout(() => {
               loading.dismiss();
-              this.items.delete(item);
+              this.todos.delete(todo);
               let toast = this.toastCtrl.create({
-                message: "You have deleted " + item['name'] + " successfully .",
+                message: "You have deleted " + todo['title'] + " successfully .",
                 duration: 2000,
                 position: 'top'
               });
