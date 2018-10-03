@@ -28,7 +28,7 @@ export class TodosPage {
     public loadingCtrl: LoadingController,
     private store: Store<AppState>
   ) {
-    this.currentTodos = this.store.select<Todo>('todos');
+    this.currentTodos = this.store.select<Todos>('todos');
   }
 
   /**

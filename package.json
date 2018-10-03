@@ -31,7 +31,7 @@
     "@ionic/storage": "2.2.0",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
-    "@ngrx/store": "^6.1.0",
+    "@ngrx/store": "^5.2.0",
     "@ngrx/store-devtools": "^6.1.0",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
