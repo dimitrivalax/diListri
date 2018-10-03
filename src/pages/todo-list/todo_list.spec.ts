@@ -1,6 +1,8 @@
+import { TestStore } from './../../mocks/store/test-store';
+import { ROOT_REDUCER } from './../../core/reducers/reducers';
 import { Todos as TodosStub, Todos} from '../../mocks/providers/Todos';
 import { TodosPage } from './todo_list';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
@@ -9,6 +11,9 @@ import { Observable } from 'rxjs/Observable';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController, Config } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { Store, StoreModule } from '@ngrx/store';
+import { BehaviorSubject } from 'rxjs';
+import { of } from 'rxjs/observable/of';
 
 
 const platformStub = {
@@ -41,27 +46,46 @@ const NavParamsStub = {
   }
 }
 
- class ConfigStub{
-
-	public get(key: any): any {
-		return Observable.of(key);
-  }	
-  public set(s1: String, s2: String, s3: String): any {
-    return Observable.of(s1, s2, s3);
-	}
-}
-
-
-
- class SettingsStub{
-
-	public get(key: any): any {
-		return Observable.of(key);
-	}
-}
-
 class vibrationStub  {
 };
+
+const initialState = [
+  {
+    "id": 1,
+    "title": "Todo 1",
+    "content": "Something to do 1"
+  },
+  {
+    "id": 2,
+    "title": "Todo 2",
+    "content": "Something to do 2"
+  },
+  {
+    "id": 3,
+    "title": "Todo 3",
+    "content": "Something to do 3"
+  },
+  {
+    "id": 4,
+    "title": "Todo 4",
+    "content": "Something to do 4"
+  },
+  {
+    "id": 5,
+    "title": "Todo 5",
+    "content": "Something to do 5"
+  },
+  {
+    "id": 6,
+    "title": "Todo 6",
+    "content": "Something to do 6"
+  },
+  {
+    "id": 7,
+    "title": "Todo 7",
+    "content": "Something to do 7"
+  }
+];
 
 
 describe('TodosPage', () => {
@@ -72,7 +96,10 @@ describe('TodosPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [TranslateModule.forRoot()],
+      imports: [
+        TranslateModule.forRoot(),
+        StoreModule.forRoot(ROOT_REDUCER)
+      ],
       declarations: [TodosPage],
       providers: [
         { provide: Platform, useValue: platformStub },
@@ -84,15 +111,21 @@ describe('TodosPage', () => {
         { provide: AlertController, useValue: NavParamsStub },
         { provide: LoadingController, useValue: NavParamsStub },
         { provide: Todos, useValue: new TodosStub },
-        { provide: TranslateService, useClass: TranslateServiceStub }
+        { provide: TranslateService, useClass: TranslateServiceStub },
+        { provide: Store, useClass: TestStore }
       ]
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  let store: TestStore<any>;
+
+  beforeEach(inject([Store], (testStore: TestStore<any>) => {
     fixture = TestBed.createComponent(TodosPage);
     instance = fixture.debugElement.componentInstance;
-  });
+
+    store = testStore;                            // save store reference for use in tests                                  
+    store.setState(initialState);
+  }));
 
   it('should create the TodosPage component', () => {
     expect(instance).toBeTruthy();
@@ -100,14 +133,11 @@ describe('TodosPage', () => {
 
 
 
-  it('should create the TodosPage component with 8 items', () => {
+  it('should create the TodosPage component with 8 items from initial state', () => {
     expect(instance).toBeTruthy();
-    expect(instance.currentTodos[0].title).toStrictEqual('Todo 1');
-    expect(instance.currentTodos[1].title).toStrictEqual('Todo 2');
-    expect(instance.currentTodos[2].title).toStrictEqual('Todo 3');
-    expect(instance.currentTodos[3].title).toStrictEqual('Todo 4');
-    expect(instance.currentTodos[4].title).toStrictEqual('Todo 5');
-    expect(instance.currentTodos[5].title).toStrictEqual('Todo 6');
-    expect(instance.currentTodos[6].title).toStrictEqual('Todo 7');
+    instance.currentTodos.subscribe(data => 
+      expect(data).toBe(initialState)
+      )
+
   });
 });

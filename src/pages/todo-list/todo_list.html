@@ -18,7 +18,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="getTodos($event)" placeholder="{{ 'Search Todo' | translate }}"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos" #slidingItem>
+    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos | async" #slidingItem>
       <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">
         <h2>{{todo.title}}</h2>
         <p>{{todo.content}}</p>

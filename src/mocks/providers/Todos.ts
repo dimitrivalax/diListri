@@ -3,6 +3,7 @@ import { Todo } from '../../models/todo';
 
 @Injectable()
 export class Todos {
+
   todos: Todo[] = [];
 
   defaultTodo: any = {
@@ -48,7 +49,7 @@ export class Todos {
     }
   }
 
-  query(params?: any) {
+   query(params?: any) {
     if (!params) {
       return this.todos;
     }

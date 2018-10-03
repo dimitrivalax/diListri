@@ -12,6 +12,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { Todos } from '../mocks/providers/Todos';
+import { StoreModule } from '@ngrx/store';
+import { ROOT_REDUCER } from '../core/reducers/reducers';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -49,7 +52,8 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    StoreModule.forRoot(ROOT_REDUCER)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
