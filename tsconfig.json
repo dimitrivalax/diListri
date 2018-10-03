@@ -12,9 +12,6 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
-    "paths": {
-      "@core/*": ["src/app/core/*"]
-    }
   },
   "include": [
     "src/**/*.ts"
