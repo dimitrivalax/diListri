@@ -12,8 +12,6 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController, Config } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { Store, StoreModule } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
-import { of } from 'rxjs/observable/of';
 
 
 const platformStub = {
