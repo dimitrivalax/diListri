@@ -4,8 +4,8 @@ import { IonicPage, ModalController, NavController, NavParams, ToastController, 
 import { Vibration } from '@ionic-native/vibration';
 import { ItemSliding } from 'ionic-angular/umd';
 import { Todos } from '../../mocks/providers/Todos';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../core/reducers/todo.reducer';
+import { Store, select } from '@ngrx/store';
+import { AppState, selectTodos } from '../../core/reducers/todo.reducer';
 import { Observable } from 'rxjs';
 
 @IonicPage()
@@ -28,7 +28,7 @@ export class TodosPage {
     public loadingCtrl: LoadingController,
     private store: Store<AppState>
   ) {
-    this.currentTodos = this.store.select<Todos>('todos');
+    this.currentTodos = this.store.pipe(select(selectTodos))
   }
 
   /**
