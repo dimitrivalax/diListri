@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { Todos } from '../mocks/providers/Todos';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCER } from '../core/reducers/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 // The translate loader needs to know where to load i18n files
@@ -53,7 +54,11 @@ export function provideSettings(storage: Storage) {
     }),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    StoreModule.forRoot(ROOT_REDUCER)
+    StoreModule.forRoot(ROOT_REDUCER),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
