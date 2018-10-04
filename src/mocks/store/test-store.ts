@@ -11,5 +11,9 @@ export class TestStore<T> {
     return this.state.asObservable();
   }
 
+  pipe() {
+    return this.state.asObservable();
+  }
+
   dispatch(action: any) {}
 }
