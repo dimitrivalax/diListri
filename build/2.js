@@ -154,7 +154,7 @@ var TodosPage = /** @class */ (function () {
                         loading.present();
                         setTimeout(function () {
                             loading.dismiss();
-                            _this.todos.delete(todo);
+                            _this.deleteTodoAction(todo.id);
                             var toast = _this.toastCtrl.create({
                                 message: 'You have deleted ' + todo['title'] + ' successfully .',
                                 duration: 2000,
