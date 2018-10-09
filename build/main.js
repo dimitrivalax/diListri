@@ -39,59 +39,59 @@ webpackEmptyAsyncContext.id = 135;
 
 var map = {
 	"../pages/cards/cards.module": [
-		354,
+		353,
 		13
 	],
 	"../pages/content/content.module": [
-		355,
+		354,
 		12
 	],
 	"../pages/item-create/item-create.module": [
-		356,
+		355,
 		11
 	],
 	"../pages/item-detail/item-detail.module": [
-		357,
+		356,
 		10
 	],
 	"../pages/list-master/list-master.module": [
-		358,
+		357,
 		9
 	],
 	"../pages/login/login.module": [
-		359,
+		358,
 		8
 	],
 	"../pages/menu/menu.module": [
-		360,
+		359,
 		7
 	],
 	"../pages/search/search.module": [
-		361,
+		360,
 		6
 	],
 	"../pages/settings/settings.module": [
-		362,
+		361,
 		5
 	],
 	"../pages/signup/signup.module": [
-		363,
+		362,
 		4
 	],
 	"../pages/tabs/tabs.module": [
-		364,
+		363,
 		3
 	],
 	"../pages/todo-list/todo_list.module": [
-		365,
+		364,
 		2
 	],
 	"../pages/tutorial/tutorial.module": [
-		366,
+		365,
 		1
 	],
 	"../pages/welcome/welcome.module": [
-		367,
+		366,
 		0
 	]
 };
@@ -181,7 +181,6 @@ var Api = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Todos; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_todo__ = __webpack_require__(313);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -192,7 +191,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var Todos = /** @class */ (function () {
     function Todos() {
         this.todos = [];
@@ -202,37 +200,44 @@ var Todos = /** @class */ (function () {
         };
         var todos = [
             {
+                "id": "1",
                 "title": "Todo 1",
                 "content": "Something to do 1"
             },
             {
+                "id": "2",
                 "title": "Todo 2",
                 "content": "Something to do 2"
             },
             {
+                "id": "3",
                 "title": "Todo 3",
                 "content": "Something to do 3"
             },
             {
+                "id": "4",
                 "title": "Todo 4",
                 "content": "Something to do 4"
             },
             {
+                "id": "5",
                 "title": "Todo 5",
                 "content": "Something to do 5"
             },
             {
+                "id": "6",
                 "title": "Todo 6",
                 "content": "Something to do 6"
             },
             {
+                "id": "7",
                 "title": "Todo 7",
                 "content": "Something to do 7"
             }
         ];
         for (var _i = 0, todos_1 = todos; _i < todos_1.length; _i++) {
             var todo = todos_1[_i];
-            this.todos.push(new __WEBPACK_IMPORTED_MODULE_1__models_todo__["a" /* Todo */](todo));
+            this.todos.push(todo);
         }
     }
     Todos.prototype.query = function (params) {
@@ -297,42 +302,42 @@ var Tab3Root = 'SettingsPage';
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return selectTodos; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = todoReducer;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__ = __webpack_require__(242);
 
 var selectTodos = function (state) { return state.todos; };
 var initialState = [
     {
-        "id": 1,
+        "id": "1",
         "title": "Todo 1",
         "content": "Something to do 1"
     },
     {
-        "id": 2,
+        "id": "2",
         "title": "Todo 2",
         "content": "Something to do 2"
     },
     {
-        "id": 3,
+        "id": "3",
         "title": "Todo 3",
         "content": "Something to do 3"
     },
     {
-        "id": 4,
+        "id": "4",
         "title": "Todo 4",
         "content": "Something to do 4"
     },
     {
-        "id": 5,
+        "id": "5",
         "title": "Todo 5",
         "content": "Something to do 5"
     },
     {
-        "id": 6,
+        "id": "6",
         "title": "Todo 6",
         "content": "Something to do 6"
     },
     {
-        "id": 7,
+        "id": "7",
         "title": "Todo 7",
         "content": "Something to do 7"
     }
@@ -343,7 +348,7 @@ function todoReducer(state, action) {
     switch (action.type) {
         case __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__["a" /* ADD_TODO */]:
             return state.concat(action.payload);
-        case __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__["b" /* DELETE_TODO */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__["c" /* DELETE_TODO */]:
             return state.filter(function (todo) { return todo.id !== action.payload.id; });
         default:
             return state;
@@ -357,9 +362,39 @@ function todoReducer(state, action) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADD_TODO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return DELETE_TODO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AddTodo; });
+/* unused harmony export DeleteTodo */
+var ADD_TODO = "ADD_TODO";
+var DELETE_TODO = "DELETE_TODO";
+var AddTodo = /** @class */ (function () {
+    function AddTodo(payload) {
+        this.payload = payload;
+        this.type = ADD_TODO;
+    }
+    return AddTodo;
+}());
+
+var DeleteTodo = /** @class */ (function () {
+    function DeleteTodo(payload) {
+        this.payload = payload;
+        this.type = DELETE_TODO;
+    }
+    return DeleteTodo;
+}());
+
+//# sourceMappingURL=todo.actions.js.map
+
+/***/ }),
+
+/***/ 243:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(254);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -367,7 +402,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 253:
+/***/ 254:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -383,14 +418,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_core__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_translate_http_loader__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_translate_http_loader__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__mocks_providers_Todos__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ngrx_store__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__core_reducers_reducers__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ngrx_store_devtools__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__core_reducers_reducers__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ngrx_store_devtools__ = __webpack_require__(348);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -498,26 +533,6 @@ var AppModule = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ 313:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Todo; });
-var Todo = /** @class */ (function () {
-    function Todo(fields) {
-        // Quick and dirty extend/assign fields to this model
-        for (var f in fields) {
-            // @ts-ignore
-            this[f] = fields[f];
-        }
-    }
-    return Todo;
-}());
-
-//# sourceMappingURL=todo.js.map
 
 /***/ }),
 
@@ -713,37 +728,7 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 329:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADD_TODO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DELETE_TODO; });
-/* unused harmony export AddTodo */
-/* unused harmony export DeleteTodo */
-var ADD_TODO = "ADD_TODO";
-var DELETE_TODO = "DELETE_TODO";
-var AddTodo = /** @class */ (function () {
-    function AddTodo(payload) {
-        this.payload = payload;
-        this.type = ADD_TODO;
-    }
-    return AddTodo;
-}());
-
-var DeleteTodo = /** @class */ (function () {
-    function DeleteTodo(payload) {
-        this.payload = payload;
-        this.type = DELETE_TODO;
-    }
-    return DeleteTodo;
-}());
-
-//# sourceMappingURL=todo.actions.js.map
-
-/***/ }),
-
-/***/ 347:
+/***/ 346:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -848,7 +833,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 348:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -862,5 +847,5 @@ var ROOT_REDUCER = {
 
 /***/ })
 
-},[242]);
+},[243]);
 //# sourceMappingURL=main.js.map
