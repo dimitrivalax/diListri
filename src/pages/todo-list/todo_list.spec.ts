@@ -133,4 +133,14 @@ describe('TodosPage', () => {
       data => 
       expect(data[7]).toBe(todo));
   });
+
+  it('should create the TodosPage component with the possibilty to delete todo', () => {
+    expect(instance).toBeTruthy();
+
+    instance.deleteTodoAction("3");
+
+    instance.currentTodos.subscribe(
+      data => 
+      expect(data[2].id).toBe("4"));
+  });
 });

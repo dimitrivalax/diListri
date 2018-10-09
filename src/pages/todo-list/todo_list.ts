@@ -1,3 +1,4 @@
+import { DeleteTodo } from './../../core/actions/todo.actions';
 import { Todo } from '../../models/todo';
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
@@ -75,6 +76,10 @@ export class TodosPage {
       position: 'top'
     });
     toast.present();
+  }
+
+  deleteTodoAction(id : String) {
+    this.store.dispatch(new DeleteTodo(id));
   }
 
   deleteTodo(todo, slidingItem: ItemSliding) {

@@ -12,7 +12,7 @@ export class AddTodo implements Action {
 export class DeleteTodo implements Action {
   readonly type = DELETE_TODO;
 
-  constructor(public payload: any) {}
+  constructor(public payload: String) {}
 }
 
 export type All = AddTodo | DeleteTodo;
