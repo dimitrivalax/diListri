@@ -103,7 +103,7 @@ export class TodosPage {
             loading.present();
             setTimeout(() => {
               loading.dismiss();
-              this.todos.delete(todo);
+              this.deleteTodoAction(todo.id)
               let toast = this.toastCtrl.create({
                 message: 'You have deleted ' + todo['title'] + ' successfully .',
                 duration: 2000,
