@@ -7,7 +7,7 @@ import { Todos } from '../../mocks/providers/Todos';
 import { Store, select } from '@ngrx/store';
 import { AppState, selectTodos } from '../../core/reducers/todo.reducer';
 import { Observable } from 'rxjs';
-import { DeleteTodo, AddTodo } from '../../core/actions/todo.actions';
+import { AddTodo } from '../../core/actions/todo.actions';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ import { DeleteTodo, AddTodo } from '../../core/actions/todo.actions';
   templateUrl: 'todo_list.html'
 })
 export class TodosPage {
-  currentTodos: Observable<Todo>;
+  currentTodos: Observable<Todo[]>;
   public press: number = 0;
 
   constructor(
