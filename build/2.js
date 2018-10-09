@@ -107,11 +107,11 @@ var TodosPage = /** @class */ (function () {
     };
     TodosPage.prototype.openAddTodoModal = function () {
         var _this = this;
-        var addModal = this.modalCtrl.create('TodoCreatePage');
+        var addModal = this.modalCtrl.create('ItemCreatePage');
         addModal.onDidDismiss(function (todo) {
             if (todo) {
                 console.log(todo);
-                _this.todos.add(todo);
+                _this.addTodo(todo);
             }
         });
         addModal.present();
