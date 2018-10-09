@@ -7,6 +7,7 @@ import { Todos } from '../../mocks/providers/Todos';
 import { Store, select } from '@ngrx/store';
 import { AppState, selectTodos } from '../../core/reducers/todo.reducer';
 import { Observable } from 'rxjs';
+import { DeleteTodo, AddTodo } from '../../core/actions/todo.actions';
 
 @IonicPage()
 @Component({
@@ -50,7 +51,7 @@ export class TodosPage {
     });
   }
 
-  addTodo() {
+  openAddTodoModal() {
     let addModal = this.modalCtrl.create('TodoCreatePage');
     addModal.onDidDismiss(todo => {
       if (todo) {
@@ -59,6 +60,10 @@ export class TodosPage {
       }
     });
     addModal.present();
+  }
+
+  addTodo(todo: Todo) {
+    this.store.dispatch(new AddTodo(todo));
   }
 
   pressEvent(ev) {
