@@ -53,11 +53,11 @@ export class TodosPage {
   }
 
   openAddTodoModal() {
-    let addModal = this.modalCtrl.create('TodoCreatePage');
+    let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(todo => {
       if (todo) {
         console.log(todo);
-        this.todos.add(todo);
+        this.addTodo(todo)
       }
     });
     addModal.present();
