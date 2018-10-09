@@ -296,13 +296,43 @@ var Tab3Root = 'SettingsPage';
 
 /***/ }),
 
-/***/ 241:
+/***/ 239:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADD_TODO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return DELETE_TODO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AddTodo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return DeleteTodo; });
+var ADD_TODO = "ADD_TODO";
+var DELETE_TODO = "DELETE_TODO";
+var AddTodo = /** @class */ (function () {
+    function AddTodo(payload) {
+        this.payload = payload;
+        this.type = ADD_TODO;
+    }
+    return AddTodo;
+}());
+
+var DeleteTodo = /** @class */ (function () {
+    function DeleteTodo(payload) {
+        this.payload = payload;
+        this.type = DELETE_TODO;
+    }
+    return DeleteTodo;
+}());
+
+//# sourceMappingURL=todo.actions.js.map
+
+/***/ }),
+
+/***/ 242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return selectTodos; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = todoReducer;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__ = __webpack_require__(239);
 
 var selectTodos = function (state) { return state.todos; };
 var initialState = [
@@ -349,42 +379,12 @@ function todoReducer(state, action) {
         case __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__["a" /* ADD_TODO */]:
             return state.concat(action.payload);
         case __WEBPACK_IMPORTED_MODULE_0__actions_todo_actions__["c" /* DELETE_TODO */]:
-            return state.filter(function (todo) { return todo.id !== action.payload.id; });
+            return state.filter(function (todo) { return todo.id !== action.payload; });
         default:
             return state;
     }
 }
 //# sourceMappingURL=todo.reducer.js.map
-
-/***/ }),
-
-/***/ 242:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADD_TODO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return DELETE_TODO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AddTodo; });
-/* unused harmony export DeleteTodo */
-var ADD_TODO = "ADD_TODO";
-var DELETE_TODO = "DELETE_TODO";
-var AddTodo = /** @class */ (function () {
-    function AddTodo(payload) {
-        this.payload = payload;
-        this.type = ADD_TODO;
-    }
-    return AddTodo;
-}());
-
-var DeleteTodo = /** @class */ (function () {
-    function DeleteTodo(payload) {
-        this.payload = payload;
-        this.type = DELETE_TODO;
-    }
-    return DeleteTodo;
-}());
-
-//# sourceMappingURL=todo.actions.js.map
 
 /***/ }),
 
@@ -409,11 +409,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* unused harmony export createTranslateLoader */
 /* unused harmony export provideSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_vibration__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_vibration__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(142);
@@ -838,7 +838,7 @@ var MyApp = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROOT_REDUCER; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__todo_reducer__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__todo_reducer__ = __webpack_require__(242);
 
 var ROOT_REDUCER = {
     todos: __WEBPACK_IMPORTED_MODULE_0__todo_reducer__["b" /* todoReducer */]

@@ -49,13 +49,14 @@ var TodosPageModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_vibration__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mocks_providers_Todos__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngrx_store__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_reducers_todo_reducer__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_actions_todo_actions__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_actions_todo_actions__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_vibration__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mocks_providers_Todos__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngrx_store__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_reducers_todo_reducer__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_actions_todo_actions__ = __webpack_require__(239);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,6 +66,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -84,7 +86,7 @@ var TodosPage = /** @class */ (function () {
         this.loadingCtrl = loadingCtrl;
         this.store = store;
         this.press = 0;
-        this.currentTodos = this.store.pipe(Object(__WEBPACK_IMPORTED_MODULE_4__ngrx_store__["k" /* select */])(__WEBPACK_IMPORTED_MODULE_5__core_reducers_todo_reducer__["a" /* selectTodos */]));
+        this.currentTodos = this.store.pipe(Object(__WEBPACK_IMPORTED_MODULE_5__ngrx_store__["k" /* select */])(__WEBPACK_IMPORTED_MODULE_6__core_reducers_todo_reducer__["a" /* selectTodos */]));
     }
     /**
      * Perform a service for the proper items.
@@ -115,7 +117,7 @@ var TodosPage = /** @class */ (function () {
         addModal.present();
     };
     TodosPage.prototype.addTodo = function (todo) {
-        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_6__core_actions_todo_actions__["b" /* AddTodo */](todo));
+        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_7__core_actions_todo_actions__["b" /* AddTodo */](todo));
     };
     TodosPage.prototype.pressEvent = function (ev) {
         this.press++;
@@ -126,6 +128,9 @@ var TodosPage = /** @class */ (function () {
             position: 'top'
         });
         toast.present();
+    };
+    TodosPage.prototype.deleteTodoAction = function (id) {
+        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_0__core_actions_todo_actions__["d" /* DeleteTodo */](id));
     };
     TodosPage.prototype.deleteTodo = function (todo, slidingItem) {
         var _this = this;
@@ -164,18 +169,18 @@ var TodosPage = /** @class */ (function () {
         alert.present();
     };
     TodosPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'todo_list',template:/*ion-inline-start:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-buttons left>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>{{ \'Todo List\' | translate }}</ion-title>\n    <ion-buttons right>\n      <button ion-button icon-only (click)="openAddTodoModal()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar (ionInput)="getTodos($event)" placeholder="{{ \'Search Todo\' | translate }}"></ion-searchbar>\n  <ion-list>\n    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos | async" #slidingItem>\n      <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">\n        <h2>{{todo.title}}</h2>\n        <p>{{todo.content}}</p>\n        <ion-icon class="tick" item-end ios="ios-checkmark" md="md-checkmark" class="nextDiff"></ion-icon>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="ios-more"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="text"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="call"></ion-icon>\n        </button>\n      </ion-item-options>\n\n      <ion-item-options side="left">\n        <button ion-button color="dark" (click)="deleteTodo(todo,slidingItem)" icon-start>\n          <ion-icon name="trash"></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>\n\n\n'/*ion-inline-end:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_vibration__["a" /* Vibration */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__mocks_providers_Todos__["a" /* Todos */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4__ngrx_store__["h" /* Store */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_native_vibration__["a" /* Vibration */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_4__mocks_providers_Todos__["a" /* Todos */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_5__ngrx_store__["h" /* Store */]])
     ], TodosPage);
     return TodosPage;
 }());
