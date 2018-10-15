@@ -22,20 +22,12 @@
       <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">
         <h2>{{todo.title}}</h2>
         <p>{{todo.content}}</p>
-        <p>{{todo.dueDate}}</p>
+        <p>{{todo.dueDate | date: "'le' dd/MM/yyyy 'à' HH:mm"}}</p>
         <ion-icon class="tick" item-end ios="ios-checkmark" md="md-checkmark" class="nextDiff"></ion-icon>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="dark" icon-start>
-          <ion-icon name="ios-more"></ion-icon>
-
-        </button>
-        <button ion-button color="dark" icon-start>
-          <ion-icon name="text"></ion-icon>
-
-        </button>
         <button ion-button color="dark" icon-start (click)="openDatePicker(todo)" >
-          <ion-icon name="call"></ion-icon>
+          <ion-icon name="alarm"></ion-icon>
         </button>
       </ion-item-options>
 

@@ -122,6 +122,20 @@ export class TodosPage {
     alert.present();
   }
 
+  updateToto(todo : Todo){
+    this.store.dispatch(new UpdateTodo(todo));
+  }
+
+  setLocalNotification(todo: Todo, date: Date){
+    this.localNotifications.schedule({
+      title: todo.title.toString(),
+      text: todo.content.toString(),
+      trigger: {at: date},
+      led: 'FF0000',
+      sound: null
+    });
+  }
+
 
   openDatePicker(todo: Todo){
     this.datePicker.show({
@@ -130,14 +144,8 @@ export class TodosPage {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
       date => {
-        this.store.dispatch(new UpdateTodo(todo));
-        this.localNotifications.schedule({
-          title: todo.title.toString(),
-          text: todo.content.toString(),
-          trigger: {at: date},
-          led: 'FF0000',
-          sound: null
-        });
+        this.updateToto(todo)
+        this.setLocalNotification(todo, date)
       },
       err => console.log('Error occurred while getting date: ', err)
     );

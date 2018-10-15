@@ -52,17 +52,20 @@ const initialState = [
   {
     id: '1',
     title: 'Todo 1',
-    content: 'Something to do 1'
+    content: 'Something to do 1',
+    dueDate: new Date()
   },
   {
     id: '2',
     title: 'Todo 2',
-    content: 'Something to do 2'
+    content: 'Something to do 2',
+    dueDate: new Date()
   },
   {
     id: '3',
     title: 'Todo 3',
-    content: 'Something to do 3'
+    content: 'Something to do 3',
+    dueDate: new Date()
   },
   {
     id: '4',
@@ -72,17 +75,20 @@ const initialState = [
   {
     id: '5',
     title: 'Todo 5',
-    content: 'Something to do 5'
+    content: 'Something to do 5',
+    dueDate: new Date()
   },
   {
     id: '6',
     title: 'Todo 6',
-    content: 'Something to do 6'
+    content: 'Something to do 6',
+    dueDate: new Date()
   },
   {
     id: '7',
     title: 'Todo 7',
-    content: 'Something to do 7'
+    content: 'Something to do 7',
+    dueDate: new Date()
   }
 ];
 
@@ -129,7 +135,10 @@ describe('TodosPage', () => {
 
   it('should create the TodosPage component with 8 items from initial state', () => {
     expect(instance).toBeTruthy();
-    instance.currentTodos.subscribe(data => expect(data[6].title).toBe(initialState[6].title));
+    instance.currentTodos.subscribe(data => {
+      expect(data[6].title).toBe(initialState[6].title);
+      expect(data[6].dueDate).toBe(initialState[6].dueDate);
+    });
   });
 
   it('should create the TodosPage component with the possibilty to add todo', () => {
@@ -137,18 +146,14 @@ describe('TodosPage', () => {
     let todo = new Todo('todo title', 'todo content');
     instance.addTodo(todo);
 
-    instance.currentTodos.subscribe(
-      data => 
-      expect(data[7]).toBe(todo));
+    instance.currentTodos.subscribe(data => expect(data[7]).toBe(todo));
   });
 
   it('should create the TodosPage component with the possibilty to delete todo', () => {
     expect(instance).toBeTruthy();
 
-    instance.deleteTodoAction("3");
+    instance.deleteTodoAction('3');
 
-    instance.currentTodos.subscribe(
-      data => 
-      expect(data[2].id).toBe("4"));
+    instance.currentTodos.subscribe(data => expect(data[2].id).toBe('4'));
   });
 });
