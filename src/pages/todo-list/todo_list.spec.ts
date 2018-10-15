@@ -12,6 +12,8 @@ import { Platform, NavController, NavParams, ModalController, ToastController, A
 import { Vibration } from '@ionic-native/vibration';
 import { Store, StoreModule } from '@ngrx/store';
 import { Todo } from '../../models/todo';
+import { DatePicker } from '@ionic-native/date-picker';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 const platformStub = {
   vibrate: (): Promise<string> => new Promise<string>((resolve, reject) => resolve('ready'))
@@ -41,6 +43,10 @@ class TranslateServiceStub {
 }
 
 class vibrationStub {}
+
+class DatePickerStub {}
+
+class LocalNotificationStub {}
 
 const initialState = [
   {
@@ -92,6 +98,8 @@ describe('TodosPage', () => {
       providers: [
         { provide: Platform, useValue: platformStub },
         { provide: Vibration, useValue: vibrationStub },
+        { provide: DatePicker, useValue: DatePickerStub },
+        { provide: LocalNotifications, useValue: LocalNotificationStub },
         { provide: NavController, useValue: NavControllerStub },
         { provide: NavParams, useValue: NavParamsStub },
         { provide: ModalController, useValue: NavParamsStub },
