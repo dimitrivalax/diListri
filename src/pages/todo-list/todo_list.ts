@@ -1,8 +1,10 @@
-import { DeleteTodo } from './../../core/actions/todo.actions';
+import { DeleteTodo, UpdateTodo } from './../../core/actions/todo.actions';
 import { Todo } from '../../models/todo';
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ItemSliding } from 'ionic-angular/umd';
 import { Todos } from '../../mocks/providers/Todos';
 import { Store, select } from '@ngrx/store';
@@ -28,7 +30,9 @@ export class TodosPage {
     public toastCtrl: ToastController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private datePicker: DatePicker,
+    private localNotifications: LocalNotifications
   ) {
     this.currentTodos = this.store.pipe(select(selectTodos))
   }
@@ -117,4 +121,26 @@ export class TodosPage {
     });
     alert.present();
   }
+
+
+  openDatePicker(todo: Todo){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'datetime',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(
+      date => {
+        this.store.dispatch(new UpdateTodo(todo));
+        this.localNotifications.schedule({
+          title: todo.title.toString(),
+          text: todo.content.toString(),
+          trigger: {at: date},
+          led: 'FF0000',
+          sound: null
+        });
+      },
+      err => console.log('Error occurred while getting date: ', err)
+    );
+  }
+
 }

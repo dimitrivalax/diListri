@@ -1,4 +1,6 @@
 import { Vibration } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -72,6 +74,8 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     StatusBar,
     Vibration,
+    DatePicker,
+    LocalNotifications,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

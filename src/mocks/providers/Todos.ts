@@ -78,6 +78,10 @@ export class Todos {
     this.todos.push(todo);
   }
 
+  update(todo: Todo) {
+    this.todos.push(todo);
+  }
+
   delete(todo: Todo) {
     this.todos.splice(this.todos.indexOf(todo), 1);
   }

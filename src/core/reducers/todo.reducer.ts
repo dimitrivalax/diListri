@@ -57,7 +57,8 @@ export function todoReducer(state = initialState, action) {
   switch (action.type) {
     case TodoActions.ADD_TODO:
       return [...state, ...action.payload];
-
+    case TodoActions.UPDATE_TODO:
+      return [...state, ...action.payload];
     case TodoActions.DELETE_TODO:
       return state.filter(todo => todo.id !== action.payload);
 
