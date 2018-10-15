@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 364:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__todo_list__ = __webpack_require__(378);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__todo_list__ = __webpack_require__(380);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ var TodosPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 378:
+/***/ 380:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53,10 +53,12 @@ var TodosPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_vibration__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mocks_providers_Todos__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngrx_store__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_reducers_todo_reducer__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_actions_todo_actions__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_date_picker__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_local_notifications__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__mocks_providers_Todos__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngrx_store__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_reducers_todo_reducer__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_actions_todo_actions__ = __webpack_require__(239);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,8 +76,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var TodosPage = /** @class */ (function () {
-    function TodosPage(vibration, navCtrl, navParams, todos, modalCtrl, toastCtrl, alertCtrl, loadingCtrl, store) {
+    function TodosPage(vibration, navCtrl, navParams, todos, modalCtrl, toastCtrl, alertCtrl, loadingCtrl, store, datePicker, localNotifications) {
         this.vibration = vibration;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -85,8 +89,10 @@ var TodosPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.loadingCtrl = loadingCtrl;
         this.store = store;
+        this.datePicker = datePicker;
+        this.localNotifications = localNotifications;
         this.press = 0;
-        this.currentTodos = this.store.pipe(Object(__WEBPACK_IMPORTED_MODULE_5__ngrx_store__["k" /* select */])(__WEBPACK_IMPORTED_MODULE_6__core_reducers_todo_reducer__["a" /* selectTodos */]));
+        this.currentTodos = this.store.pipe(Object(__WEBPACK_IMPORTED_MODULE_7__ngrx_store__["k" /* select */])(__WEBPACK_IMPORTED_MODULE_8__core_reducers_todo_reducer__["a" /* selectTodos */]));
     }
     /**
      * Perform a service for the proper items.
@@ -117,7 +123,7 @@ var TodosPage = /** @class */ (function () {
         addModal.present();
     };
     TodosPage.prototype.addTodo = function (todo) {
-        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_7__core_actions_todo_actions__["b" /* AddTodo */](todo));
+        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_9__core_actions_todo_actions__["b" /* AddTodo */](todo));
     };
     TodosPage.prototype.pressEvent = function (ev) {
         this.press++;
@@ -168,19 +174,38 @@ var TodosPage = /** @class */ (function () {
         });
         alert.present();
     };
+    TodosPage.prototype.openDatePicker = function (todo) {
+        var _this = this;
+        this.datePicker.show({
+            date: new Date(),
+            mode: 'datetime',
+            androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+        }).then(function (date) {
+            _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_0__core_actions_todo_actions__["f" /* UpdateTodo */](todo));
+            _this.localNotifications.schedule({
+                title: todo.title.toString(),
+                text: todo.content.toString(),
+                trigger: { at: date },
+                led: 'FF0000',
+                sound: null
+            });
+        }, function (err) { return console.log('Error occurred while getting date: ', err); });
+    };
     TodosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'todo_list',template:/*ion-inline-start:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-buttons left>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>{{ \'Todo List\' | translate }}</ion-title>\n    <ion-buttons right>\n      <button ion-button icon-only (click)="openAddTodoModal()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar (ionInput)="getTodos($event)" placeholder="{{ \'Search Todo\' | translate }}"></ion-searchbar>\n  <ion-list>\n    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos | async" #slidingItem>\n      <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">\n        <h2>{{todo.title}}</h2>\n        <p>{{todo.content}}</p>\n        <ion-icon class="tick" item-end ios="ios-checkmark" md="md-checkmark" class="nextDiff"></ion-icon>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="ios-more"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="text"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="call"></ion-icon>\n        </button>\n      </ion-item-options>\n\n      <ion-item-options side="left">\n        <button ion-button color="dark" (click)="deleteTodo(todo,slidingItem)" icon-start>\n          <ion-icon name="trash"></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>\n\n\n'/*ion-inline-end:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/
+            selector: 'todo_list',template:/*ion-inline-start:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-buttons left>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>{{ \'Todo List\' | translate }}</ion-title>\n    <ion-buttons right>\n      <button ion-button icon-only (click)="openAddTodoModal()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar (ionInput)="getTodos($event)" placeholder="{{ \'Search Todo\' | translate }}"></ion-searchbar>\n  <ion-list>\n    <ion-item-sliding class="cssForRoundSLidingItems" *ngFor="let todo of currentTodos | async" #slidingItem>\n      <ion-item (click)="openTodo(todo)" (press)="pressEvent($event)">\n        <h2>{{todo.title}}</h2>\n        <p>{{todo.content}}</p>\n        <p>{{todo.dueDate}}</p>\n        <ion-icon class="tick" item-end ios="ios-checkmark" md="md-checkmark" class="nextDiff"></ion-icon>\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="ios-more"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start>\n          <ion-icon name="text"></ion-icon>\n\n        </button>\n        <button ion-button color="dark" icon-start (click)="openDatePicker(todo)" >\n          <ion-icon name="call"></ion-icon>\n        </button>\n      </ion-item-options>\n\n      <ion-item-options side="left">\n        <button ion-button color="dark" (click)="deleteTodo(todo,slidingItem)" icon-start>\n          <ion-icon name="trash"></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>\n\n\n'/*ion-inline-end:"/home/travis/build/dimitrivalax/diListri/src/pages/todo-list/todo_list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_native_vibration__["a" /* Vibration */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_4__mocks_providers_Todos__["a" /* Todos */],
+            __WEBPACK_IMPORTED_MODULE_6__mocks_providers_Todos__["a" /* Todos */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_5__ngrx_store__["h" /* Store */]])
+            __WEBPACK_IMPORTED_MODULE_7__ngrx_store__["h" /* Store */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_date_picker__["a" /* DatePicker */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_local_notifications__["a" /* LocalNotifications */]])
     ], TodosPage);
     return TodosPage;
 }());
