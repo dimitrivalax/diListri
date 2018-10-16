@@ -15,7 +15,7 @@ import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { Todos } from '../mocks/providers/Todos';
 import { StoreModule } from '@ngrx/store';
-import { ROOT_REDUCER } from '../core/reducers/reducers';
+import { ROOT_REDUCER } from './core/reducers/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 

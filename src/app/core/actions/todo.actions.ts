@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Todo } from "../../models/todo";
+import { Todo } from "../../../models/todo";
 
 export const ADD_TODO = "ADD_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";

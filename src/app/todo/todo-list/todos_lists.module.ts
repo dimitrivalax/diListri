@@ -6,7 +6,7 @@ import { StoreModule } from "@ngrx/store";
 import { ROOT_REDUCER } from '../../core/reducers/reducers';
 
 import { TodosPage } from './todo_list';
-import { Todos } from '../../mocks/providers/Todos';
+import { Todos } from '../../../mocks/providers/Todos';
 
 
 
