@@ -16,6 +16,7 @@ import { Todos } from '../../../mocks/providers/Todos';
   ],
   imports: [
     IonicPageModule.forChild(TodosPage),
+    
     TranslateModule.forChild(),
     StoreModule.forRoot(ROOT_REDUCER)
   ],

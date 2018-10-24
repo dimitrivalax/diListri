@@ -1,4 +1,4 @@
-import { DeleteTodo, UpdateTodo } from './../../core/actions/todo.actions';
+import { DeleteTodo, UpdateTodo } from '../core/todo.actions';
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
@@ -6,9 +6,9 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ItemSliding } from 'ionic-angular/umd';
 import { Store, select } from '@ngrx/store';
-import { AppState, selectTodos } from '../../core/reducers/todo.reducer';
+import { AppState, selectTodos } from '../core/todo.reducer';
 import { Observable } from 'rxjs';
-import { AddTodo } from '../../core/actions/todo.actions';
+import { AddTodo } from '../core/todo.actions';
 import { Todo } from '../../../models/todo';
 import { Todos } from '../../../mocks/providers/Todos';
 

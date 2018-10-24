@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import * as TodoActions from "../actions/todo.actions";
+import * as TodoActions from "./todo.actions";
 import { Todo } from "../../../models/todo";
 
 
