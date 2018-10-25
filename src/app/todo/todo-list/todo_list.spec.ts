@@ -1,6 +1,5 @@
-import { TestStore } from './../../mocks/store/test-store';
+import { TestStore } from './../../../mocks/store/test-store';
 import { ROOT_REDUCER } from './../../core/reducers/reducers';
-import { Todos as TodosStub, Todos } from '../../mocks/providers/Todos';
 import { TodosPage } from './todo_list';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
@@ -11,9 +10,9 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Platform, NavController, NavParams, ModalController, ToastController, AlertController, LoadingController, Config } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { Store, StoreModule } from '@ngrx/store';
-import { Todo } from '../../models/todo';
 import { DatePicker } from '@ionic-native/date-picker';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import * as TodoActions from "./../core/todo.actions";
 
 const platformStub = {
   vibrate: (): Promise<string> => new Promise<string>((resolve, reject) => resolve('ready'))
@@ -42,13 +41,7 @@ class TranslateServiceStub {
   }
 }
 
-class vibrationStub {}
-
-class DatePickerStub {}
-
-class LocalNotificationStub {}
-
-const initialState = [
+let initialState = [
   {
     id: '1',
     title: 'Todo 1',
@@ -92,6 +85,42 @@ const initialState = [
   }
 ];
 
+const newTodo = {
+  id: '8',
+  title: 'new Todo 8',
+  content: 'new Something to do 8',
+  dueDate: new Date()
+};
+
+class StoreStub {
+
+  public pipe(key: any): any {
+    return Observable.of(initialState);
+  }
+
+  public dispatch(action: any): any {
+    switch (action.type) {
+      case TodoActions.ADD_TODO:{        
+        return initialState.push(newTodo);
+      }
+      case TodoActions.DELETE_TODO:{
+        return initialState.splice(action.payload - 1 , 1)
+      }
+      default:{
+        break; 
+      }
+    }      
+  }
+
+}
+
+class vibrationStub {}
+
+class DatePickerStub {}
+
+class LocalNotificationStub {}
+
+
 describe('TodosPage', () => {
   let instance: TodosPage;
   let fixture: ComponentFixture<TodosPage>;
@@ -112,9 +141,8 @@ describe('TodosPage', () => {
         { provide: ToastController, useValue: NavParamsStub },
         { provide: AlertController, useValue: NavParamsStub },
         { provide: LoadingController, useValue: NavParamsStub },
-        { provide: Todos, useValue: new TodosStub() },
         { provide: TranslateService, useClass: TranslateServiceStub },
-        { provide: Store, useClass: Store }
+        { provide: Store, useClass: StoreStub }
       ]
     }).compileComponents();
   }));
@@ -143,10 +171,9 @@ describe('TodosPage', () => {
 
   it('should create the TodosPage component with the possibilty to add todo', () => {
     expect(instance).toBeTruthy();
-    let todo = new Todo('todo title', 'todo content');
-    instance.addTodo(todo);
-
-    instance.currentTodos.subscribe(data => expect(data[7]).toBe(todo));
+    instance.addTodo(newTodo);
+    instance.currentTodos.subscribe(data => 
+      expect(data[7]).toBe(newTodo));
   });
 
   it('should create the TodosPage component with the possibilty to delete todo', () => {
@@ -154,6 +181,9 @@ describe('TodosPage', () => {
 
     instance.deleteTodoAction('3');
 
-    instance.currentTodos.subscribe(data => expect(data[2].id).toBe('4'));
+    instance.currentTodos.subscribe(
+      data => 
+      expect(data[2].id).toBe('4')
+      );
   });
 });

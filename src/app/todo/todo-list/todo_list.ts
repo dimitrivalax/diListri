@@ -25,7 +25,6 @@ export class TodosPage {
     public vibration: Vibration,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public todos: Todos,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     private alertCtrl: AlertController,

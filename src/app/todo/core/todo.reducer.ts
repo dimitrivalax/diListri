@@ -19,15 +19,15 @@ const initialState = [
 
 export function todoReducer(state = initialState, action) {
   console.log(action);
-  switch (action.type) {
-    case TodoActions.ADD_TODO:
-      return [...state, ...action.payload];
-    case TodoActions.UPDATE_TODO:
-      return [...state, ...action.payload];
-    case TodoActions.DELETE_TODO:
-      return state.filter(todo => todo.id !== action.payload);
-
-    default:
-      return state;
-  }
+    switch (action.type) {
+      case TodoActions.ADD_TODO:
+        return [...state, ...action.payload];
+      case TodoActions.UPDATE_TODO:
+        return [...state, ...action.payload];
+      case TodoActions.DELETE_TODO:
+        return state.filter(todo => todo.id !== action.payload);  
+      default:
+        return state;
+    }
+  
 }
