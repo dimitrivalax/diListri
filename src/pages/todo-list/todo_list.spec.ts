@@ -12,7 +12,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { Store, StoreModule } from '@ngrx/store';
 import { DatePicker } from '@ionic-native/date-picker';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import * as TodoActions from "./../../app/core/todo/todo.actions";
+import { TodoActionTypes } from './core/todo.actions';
 
 const platformStub = {
   vibrate: (): Promise<string> => new Promise<string>((resolve, reject) => resolve('ready'))
@@ -100,12 +100,10 @@ class StoreStub {
 
   public dispatch(action: any): any {
     switch (action.type) {
-      case TodoActions.ADD_TODO:{        
+      case TodoActionTypes.ADD_TODO:
         return initialState.push(newTodo);
-      }
-      case TodoActions.DELETE_TODO:{
-        return initialState.splice(action.payload - 1 , 1)
-      }
+      case TodoActionTypes.DELETE_TODO:
+        return initialState.splice(action.payload - 1 , 1);
       default:{
         break; 
       }

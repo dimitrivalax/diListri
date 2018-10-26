@@ -1,10 +1,8 @@
-import { Action } from "@ngrx/store";
-import * as TodoActions from "./todo.actions";
+import { v4 as uuid } from 'uuid';
 import { Todo } from "../../../models/todo";
+import { TodoActionTypes } from './todo.actions';
 
-
-
-export type Action = TodoActions.All;
+export const TODO_KEY = 'STORE_TODO';
 
 export const selectTodos = (state: AppState) => state.todos;
 
@@ -18,11 +16,12 @@ const initialState = [
 export function todoReducer(state = initialState, action) {
   console.log(action);
     switch (action.type) {
-      case TodoActions.ADD_TODO:
+      case TodoActionTypes.ADD_TODO:
+        action.payload.id = uuid();
         return [...state, ...action.payload];
-      case TodoActions.UPDATE_TODO:
+      case TodoActionTypes.UPDATE_TODO:
         return [...state, ...action.payload];
-      case TodoActions.DELETE_TODO:
+      case TodoActionTypes.DELETE_TODO:
         return state.filter(todo => todo.id !== action.payload);  
       default:
         return state;

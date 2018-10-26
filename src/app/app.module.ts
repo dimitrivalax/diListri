@@ -13,9 +13,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffects } from '../pages/todo-list/core/todo.effect';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCER } from './core/reducers/reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CoreModule } from './core/core.module';
 
 
 // The translate loader needs to know where to load i18n files
@@ -44,6 +47,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -56,6 +60,7 @@ export function provideSettings(storage: Storage) {
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     StoreModule.forRoot(ROOT_REDUCER),
+    EffectsModule.forRoot([TodoEffects]),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

@@ -7,8 +7,8 @@ import { ItemSliding } from 'ionic-angular/umd';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../../models/todo';
-import { AddTodo, DeleteTodo, UpdateTodo } from '../../app/core/todo/todo.actions';
-import { AppState, selectTodos } from '../../app/core/todo/todo.reducer';
+import { AddTodo, DeleteTodo, UpdateTodo } from './core/todo.actions';
+import { selectTodos, AppState } from './core/todo.reducer';
 
 @IonicPage()
 @Component({
