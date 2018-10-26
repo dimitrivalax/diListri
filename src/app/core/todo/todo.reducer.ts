@@ -8,8 +8,6 @@ export type Action = TodoActions.All;
 
 export const selectTodos = (state: AppState) => state.todos;
 
-
-
 export interface AppState {
   todos: Todo[];
 }

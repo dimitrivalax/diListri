@@ -17,7 +17,6 @@ export class UpdateTodo implements Action {
 
 export class DeleteTodo implements Action {
   readonly type = DELETE_TODO;
-
   constructor(public payload: String) {}
 }
 

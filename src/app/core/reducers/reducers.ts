@@ -1,4 +1,4 @@
-import { todoReducer } from "../../todo/core/todo.reducer";
+import { todoReducer } from "../todo/todo.reducer";
 export const ROOT_REDUCER = {
     todos: todoReducer
 };

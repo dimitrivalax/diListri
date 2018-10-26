@@ -1,5 +1,5 @@
-import { TestStore } from './../../../mocks/store/test-store';
-import { ROOT_REDUCER } from './../../core/reducers/reducers';
+import { TestStore } from './../../mocks/store/test-store';
+import { ROOT_REDUCER } from './../../app/core/reducers/reducers';
 import { TodosPage } from './todo_list';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
@@ -12,7 +12,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { Store, StoreModule } from '@ngrx/store';
 import { DatePicker } from '@ionic-native/date-picker';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import * as TodoActions from "./../core/todo.actions";
+import * as TodoActions from "./../../app/core/todo/todo.actions";
 
 const platformStub = {
   vibrate: (): Promise<string> => new Promise<string>((resolve, reject) => resolve('ready'))
