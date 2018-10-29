@@ -22,7 +22,7 @@ export class TodoEffects {
       .ofType(TodoActionTypes.ADD_TODO)
       .pipe(
         tap((action: AddTodo) =>
-          this.localStorageService.setItem(TODO_KEY, action.payload)
+          this.localStorageService.setItem(TODO_KEY, action.payload.todos)
         )
       );
   }

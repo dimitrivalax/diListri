@@ -7,6 +7,7 @@ export class LocalStorageService {
   constructor() {}
 
   setItem(key: string, value: any) {
+
     localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
   }
 
