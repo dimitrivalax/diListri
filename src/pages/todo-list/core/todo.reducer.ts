@@ -4,9 +4,10 @@ import { TodoActionTypes } from './todo.actions';
 
 export const TODO_KEY = 'STORE_TODO';
 
-export const selectTodos = (state: AppState) => state.todos;
+export const selectTodos = (state: TodoState) => state.todos;
+export const selectTodoState = (state: TodoState) => state;
 
-export interface AppState {
+export interface TodoState {
   todos: Todo[];
 }
 

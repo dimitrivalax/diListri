@@ -8,7 +8,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../../models/todo';
 import { AddTodo, DeleteTodo, UpdateTodo } from './core/todo.actions';
-import { selectTodos, AppState } from './core/todo.reducer';
+import { selectTodos, TodoState } from './core/todo.reducer';
 
 @IonicPage()
 @Component({
@@ -27,7 +27,7 @@ export class TodosPage {
     public toastCtrl: ToastController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private store: Store<AppState>,
+    private store: Store<TodoState>,
     private datePicker: DatePicker,
     private localNotifications: LocalNotifications
   ) {
