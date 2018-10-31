@@ -17,7 +17,7 @@ import { metaReducers } from '../../app/core/core.module';
     IonicPageModule.forChild(TodosPage),
     TranslateModule.forChild(),
     StoreModule.forFeature(TODO_KEY, {
-      todo: todoReducer,
+      todoReducer,
     },
     { metaReducers }),
     EffectsModule.forFeature([TodoEffects])
