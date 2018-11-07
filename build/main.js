@@ -307,7 +307,10 @@ var CoreModule = /** @class */ (function () {
                 // ngrx
                 __WEBPACK_IMPORTED_MODULE_2__ngrx_store__["j" /* StoreModule */].forRoot({}, { metaReducers: metaReducers }),
                 __WEBPACK_IMPORTED_MODULE_8__ngrx_effects__["c" /* EffectsModule */].forRoot([]),
-                __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["a" /* IonicStorageModule */].forRoot({
+                    name: '__mydb',
+                    driverOrder: ['indexeddb', 'sqlite', 'websql']
+                }),
                 // Instrumentation must be imported after importing StoreModule (config is optional)
                 __WEBPACK_IMPORTED_MODULE_7__ngrx_store_devtools__["a" /* StoreDevtoolsModule */].instrument({
                     maxAge: 25,
