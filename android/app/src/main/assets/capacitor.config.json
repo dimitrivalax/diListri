@@ -1,0 +1,6 @@
+{
+  "appId": "fr.mitri.dilistri",
+  "appName": "diListri",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
